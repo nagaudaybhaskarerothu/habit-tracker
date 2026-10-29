@@ -1,0 +1,491 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #090909;
+  font-family: 'Inter', sans-serif;
+}
+
+.habit-page {
+  min-height: 100vh;
+  padding: 50px 20px;
+  background: #090909;
+  color: #f5f5f5;
+}
+
+.habit-container {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+/* Header */
+
+.habit-header {
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.habit-subtitle {
+  margin-bottom: 12px;
+  color: #a78bfa;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.habit-header h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(30px, 5vw, 43px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+
+.habit-description {
+  margin-top: 12px;
+  color: #888888;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Statistics */
+
+.habit-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 25px;
+}
+
+.stat-card {
+  padding: 22px;
+  border: 1px solid #262626;
+  border-radius: 16px;
+  background: #141414;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  border-color: #494949;
+}
+
+.stat-icon {
+  display: inline-block;
+  margin-bottom: 13px;
+  font-size: 22px;
+}
+
+.stat-card p {
+  margin: 0 0 8px;
+  color: #999999;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.stat-card h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.completed-card h2 {
+  color: #4ade80;
+}
+
+.remaining-card h2 {
+  color: #fbbf24;
+}
+
+/* Main Panel */
+
+.habit-panel {
+  overflow: hidden;
+  padding: 28px;
+  border: 1px solid #262626;
+  border-radius: 20px;
+  background: #111111;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+}
+
+.panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.panel-heading h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.panel-heading p {
+  margin: 7px 0 0;
+  color: #777777;
+  font-size: 12px;
+}
+
+/* Clear All Button */
+
+.clear-button {
+  padding: 9px 13px;
+  border: 1px solid #492020;
+  border-radius: 9px;
+  background: #211010;
+  color: #ff7777;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.clear-button:hover {
+  background: #351515;
+}
+
+/* Input Form */
+
+.habit-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.habit-form input {
+  width: 100%;
+  min-width: 0;
+  padding: 14px 16px;
+  border: 1px solid #303030;
+  border-radius: 10px;
+  outline: none;
+  background: #191919;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.habit-form input::placeholder {
+  color: #666666;
+}
+
+.habit-form input:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
+}
+
+/* Add Button */
+
+.add-button {
+  flex-shrink: 0;
+  padding: 13px 18px;
+  border: 1px solid #8b5cf6;
+  border-radius: 10px;
+  background: #8b5cf6;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.add-button:hover {
+  transform: translateY(-1px);
+  border-color: #a78bfa;
+  background: #7c3aed;
+}
+
+/* Habit List */
+
+.habit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.habit-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 16px;
+  border: 1px solid #292929;
+  border-radius: 12px;
+  background: #171717;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.habit-item:hover {
+  border-color: #414141;
+  background: #1c1c1c;
+}
+
+.habit-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  cursor: pointer;
+}
+
+/* Custom Checkbox */
+
+.habit-label input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.custom-checkbox {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
+  border: 2px solid #484848;
+  border-radius: 6px;
+  background: #202020;
+  transition: all 0.2s ease;
+}
+
+.habit-label input:focus-visible + .custom-checkbox {
+  outline: 3px solid rgba(167, 139, 250, 0.3);
+  outline-offset: 2px;
+}
+
+.habit-label input:checked + .custom-checkbox {
+  border-color: #8b5cf6;
+  background: #8b5cf6;
+}
+
+.habit-label input:checked + .custom-checkbox::after {
+  width: 5px;
+  height: 9px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  content: '';
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+/* Habit Name */
+
+.habit-name {
+  overflow-wrap: anywhere;
+  color: #e5e5e5;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.is-completed .habit-name {
+  color: #777777;
+  text-decoration: line-through;
+}
+
+/* Status and Actions */
+
+.habit-actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 12px;
+}
+
+.habit-status {
+  padding: 6px 9px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-completed {
+  background: #10251a;
+  color: #4ade80;
+}
+
+.status-pending {
+  background: #29200e;
+  color: #fbbf24;
+}
+
+.delete-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: #242424;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.delete-button:hover {
+  transform: scale(1.05);
+  border-color: #492020;
+  background: #351515;
+}
+
+/* Empty State */
+
+.empty-state {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.empty-state > span {
+  display: inline-block;
+  margin-bottom: 12px;
+  font-size: 40px;
+}
+
+.empty-state h3 {
+  margin: 0 0 8px;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.empty-state p {
+  max-width: 330px;
+  margin: 0 auto;
+  color: #777777;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* Progress Bar */
+
+.habit-footer {
+  margin-top: 27px;
+  padding-top: 20px;
+  border-top: 1px solid #292929;
+}
+
+.habit-footer > span {
+  display: block;
+  margin-bottom: 12px;
+  color: #999999;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.progress-track {
+  overflow: hidden;
+  width: 100%;
+  height: 7px;
+  border-radius: 20px;
+  background: #292929;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #7c3aed, #a78bfa);
+  transition: width 0.3s ease;
+}
+
+/* Storage Note */
+
+.storage-note {
+  margin-top: 22px;
+  color: #666666;
+  font-size: 11px;
+  text-align: center;
+}
+
+/* Responsive Design */
+
+@media (max-width: 600px) {
+  .habit-page {
+    padding: 30px 14px;
+  }
+
+  .habit-stats {
+    gap: 9px;
+  }
+
+  .stat-card {
+    padding: 15px 11px;
+    border-radius: 12px;
+  }
+
+  .stat-card h2 {
+    font-size: 25px;
+  }
+
+  .stat-card p {
+    font-size: 10px;
+  }
+
+  .stat-icon {
+    font-size: 19px;
+  }
+
+  .habit-panel {
+    padding: 19px 13px;
+    border-radius: 16px;
+  }
+
+  .habit-form {
+    flex-direction: column;
+  }
+
+  .add-button {
+    width: 100%;
+  }
+
+  .habit-item {
+    align-items: flex-start;
+    padding: 13px 10px;
+  }
+
+  .habit-label {
+    gap: 9px;
+  }
+
+  .habit-name {
+    font-size: 12px;
+  }
+
+  .habit-actions {
+    gap: 6px;
+  }
+
+  .habit-status {
+    padding: 5px 7px;
+    font-size: 9px;
+  }
+
+  .delete-button {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 380px) {
+  .habit-item {
+    flex-wrap: wrap;
+  }
+
+  .habit-actions {
+    margin-left: 30px;
+  }
+}
